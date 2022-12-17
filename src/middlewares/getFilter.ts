@@ -16,7 +16,7 @@ export const getFilter = (req: Request, res: Response, next: NextFunction) => {
         )
         .map((u) => {
           return {
-            ID: u.uid,
+            ID: u.id,
             Nome: u.name,
             CPF: u.cpf,
             Email: u.email,

@@ -1,5 +1,5 @@
 export default interface ITransaction {
-  uid: string;
+  id: string;
   title: string;
   value: number;
   type: "outcome" | "income";

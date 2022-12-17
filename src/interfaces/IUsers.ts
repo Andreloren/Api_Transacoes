@@ -1,7 +1,7 @@
 import ITransaction from "./ITransactions";
 
 export default interface IUsers {
-  uid: string;
+  id: string;
   name: string;
   cpf: string;
   email: string;

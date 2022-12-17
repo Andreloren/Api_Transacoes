@@ -3,7 +3,7 @@ import ITransaction from "../interfaces/ITransactions";
 import { v4 } from "uuid";
 
 export class User implements IUsers {
-  uid: string;
+  id: string;
   transactions: Array<ITransaction>;
 
   constructor(
@@ -12,7 +12,7 @@ export class User implements IUsers {
     public email: string,
     public age: number
   ) {
-    this.uid = v4();
+    this.id = v4();
     this.name = name;
     this.cpf = cpf;
     this.email = email;

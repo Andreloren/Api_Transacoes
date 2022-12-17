@@ -3,6 +3,7 @@ import { addUsers } from "../functions/addUsers";
 import { checkCpf } from "../middlewares/checkCpf";
 import { checkListLength } from "../middlewares/checkListLength";
 import { getFilter } from "../middlewares/getFilter";
+import { getUserId } from "../middlewares/getUserId";
 
 export const router = Router();
 
@@ -15,3 +16,5 @@ router.get(
   [getFilter, checkListLength],
   (req: Request, res: Response) => {}
 );
+
+router.get("/users/:id", getUserId, (req: Request, res: Response) => {});
