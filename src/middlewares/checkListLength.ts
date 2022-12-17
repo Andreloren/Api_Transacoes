@@ -11,7 +11,7 @@ export const checkListLength = (
       sucesso: false,
       mensagem: "Não foi localizado nenhum usuário",
     });
-  res.status(200).json({
+  res.status(302).json({
     sucess: true,
     message: "Lista de Clientes válida",
     data: userList.map((user) => {

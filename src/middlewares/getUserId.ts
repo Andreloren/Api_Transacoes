@@ -3,6 +3,7 @@ import { userList } from "../classes/User";
 
 export const getUserId = (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
+  const { name, cpf, email, age, transactions } = req.body;
 
   const index = userList.findIndex((i) => i.id === id);
 
@@ -12,19 +13,7 @@ export const getUserId = (req: Request, res: Response, next: NextFunction) => {
       mensagem: "Usuário não localizado",
     });
   }
-
-  res.status(200).json({
-    sucess: true,
-    message: "Usuário localizado com sucesso",
-    data: userList.map((user) => {
-      return {
-        Nome: user.name,
-        CPF: user.cpf,
-        Email: user.email,
-        Idade: user.age,
-      };
-    }),
-  });
+  req.body = { name, cpf, email, age, index, transactions };
 
   next();
 };
