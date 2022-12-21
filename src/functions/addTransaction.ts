@@ -7,8 +7,6 @@ export function addTransaction(req: Request, res: Response) {
   const { title, value, type } = req.body;
 
   const newTransaction: ITransaction = new Transaction(title, value, type);
-  console.log(newTransaction);
-  console.log(title);
 
   user.transactions.push(newTransaction);
 

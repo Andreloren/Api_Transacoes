@@ -3,6 +3,8 @@ import { userList } from "../classes/User";
 import { addTransaction } from "../functions/addTransaction";
 import { addUsers } from "../functions/addUsers";
 import { removeUser } from "../functions/removeUser";
+import { showUser } from "../functions/showUser";
+import { showUsers } from "../functions/showUsers";
 import { updateUser } from "../functions/updateUser";
 import { checkCpf } from "../middlewares/checkCpf";
 import { checkInputsTransactions } from "../middlewares/checkInputsTransactions";
@@ -33,22 +35,26 @@ router.post(
 router.get(
   "/users",
   [getFilter, checkListLength],
-  (req: Request, res: Response) => {}
+  (req: Request, res: Response) => {
+    showUsers(req, res);
+  }
 );
 
 router.get("/users/:id", getId, (req: Request, res: Response) => {
-  const { index } = req.body;
-  res.status(302).json({
-    sucess: true,
-    message: `Usuário localizado com sucesso ID: ${userList[index].id}`,
-    data: {
-      Nome: userList[index].name,
-      CPF: userList[index].cpf,
-      Email: userList[index].email,
-      Idade: userList[index].age,
-    },
-  });
+  showUser(req, res);
 });
+
+router.get(
+  "/users/:userId/transactions",
+  getUserId,
+  (req: Request, res: Response) => {}
+);
+
+router.get(
+  "/user/:userId/transactions/:id",
+  getUserId,
+  (req: Request, res: Response) => {}
+);
 
 router.put("/users/:id", getId, (req: Request, res: Response) => {
   updateUser(req, res);
@@ -57,3 +63,11 @@ router.put("/users/:id", getId, (req: Request, res: Response) => {
 router.delete("/users/:id", getId, (req: Request, res: Response) => {
   removeUser(req, res);
 });
+
+// const retornar = pets.filter(
+//   (f) =>
+//     // undefined
+//     (f.nome === filtro || !filtro) &&
+//     // undefined
+//     (f.observacao == type || !type)
+// );
