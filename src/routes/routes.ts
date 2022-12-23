@@ -19,6 +19,7 @@ import {
   getFilter,
   getFilterTransaction,
   getId,
+  getTransactionId,
   getUserId,
 } from "../middlewares";
 
@@ -62,7 +63,7 @@ router.get(
 
 router.get(
   "/user/:userId/transactions/:id",
-  getUserId,
+  [getUserId, getTransactionId],
   (req: Request, res: Response) => {
     showTransactionForId(req, res);
   }
@@ -74,7 +75,7 @@ router.put("/users/:id", getId, (req: Request, res: Response) => {
 
 router.put(
   "/users/:userId/transactions/:id",
-  getId,
+  [getUserId, getTransactionId],
   (req: Request, res: Response) => {}
 );
 
@@ -84,6 +85,6 @@ router.delete("/users/:id", getId, (req: Request, res: Response) => {
 
 router.delete(
   "/users/:userId/transactions/:id",
-  getId,
+  [getUserId, getTransactionId],
   (req: Request, res: Response) => {}
 );

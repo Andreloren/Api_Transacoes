@@ -6,3 +6,4 @@ export * from "./getFilter";
 export * from "./getId";
 export * from "./getUserId";
 export * from "./getFilterTransaction";
+export * from "./getTransactionId";
