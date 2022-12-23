@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { values } from "./values";
 
 export function showUserTransactions(req: Request, res: Response) {
   const { user } = req.body;
@@ -14,5 +15,6 @@ export function showUserTransactions(req: Request, res: Response) {
     sucess: true,
     message: "Transações localizadas com sucesso",
     data: user.transactions,
+    balance: values(req, res),
   });
 }

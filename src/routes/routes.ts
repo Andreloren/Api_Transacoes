@@ -72,6 +72,18 @@ router.put("/users/:id", getId, (req: Request, res: Response) => {
   updateUser(req, res);
 });
 
+router.put(
+  "/users/:userId/transactions/:id",
+  getId,
+  (req: Request, res: Response) => {}
+);
+
 router.delete("/users/:id", getId, (req: Request, res: Response) => {
   removeUser(req, res);
 });
+
+router.delete(
+  "/users/:userId/transactions/:id",
+  getId,
+  (req: Request, res: Response) => {}
+);
