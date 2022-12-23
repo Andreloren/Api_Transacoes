@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { userList } from "../classes/User";
+import { userList } from "../data/user.data";
 
 export const checkListLength = (
   req: Request,

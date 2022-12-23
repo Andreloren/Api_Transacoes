@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { userList } from "../classes/User";
+import { userList } from "../data/user.data";
+import { IResponseDefault } from "../interfaces/IResponseDefault";
 
 export const checkCpf = (req: Request, res: Response, next: NextFunction) => {
   const { cpf } = req.body;
@@ -10,7 +11,7 @@ export const checkCpf = (req: Request, res: Response, next: NextFunction) => {
     return res.status(403).json({
       sucess: false,
       message: "CPF já existe na base",
-    });
+    } as IResponseDefault);
   }
   next();
 };

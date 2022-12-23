@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { userList } from "../classes/User";
+import { userList } from "../data/user.data";
 
 export const getFilter = (req: Request, res: Response, next: NextFunction) => {
   const { filter } = req.query;

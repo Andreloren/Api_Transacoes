@@ -20,5 +20,3 @@ export class User implements IUsers {
     this.transactions = [];
   }
 }
-
-export let userList: User[] = [];

@@ -1,18 +1,26 @@
 import { Router, Request, Response } from "express";
-import { userList } from "../classes/User";
-import { addTransaction } from "../functions/addTransaction";
-import { addUsers } from "../functions/addUsers";
-import { removeUser } from "../functions/removeUser";
-import { showUser } from "../functions/showUser";
-import { showUsers } from "../functions/showUsers";
-import { updateUser } from "../functions/updateUser";
-import { checkCpf } from "../middlewares/checkCpf";
-import { checkInputsTransactions } from "../middlewares/checkInputsTransactions";
-import { checkInputsUsers } from "../middlewares/checkInputsUsers";
-import { checkListLength } from "../middlewares/checkListLength";
-import { getFilter } from "../middlewares/getFilter";
-import { getId } from "../middlewares/getId";
-import { getUserId } from "../middlewares/getUserId";
+
+import {
+  addTransaction,
+  addUsers,
+  removeUser,
+  showUser,
+  showUsers,
+  updateUser,
+  showTransactionForId,
+  showUserTransactions,
+} from "../functions";
+
+import {
+  checkCpf,
+  checkInputsTransactions,
+  checkInputsUsers,
+  checkListLength,
+  getFilter,
+  getFilterTransaction,
+  getId,
+  getUserId,
+} from "../middlewares";
 
 export const router = Router();
 
@@ -46,14 +54,18 @@ router.get("/users/:id", getId, (req: Request, res: Response) => {
 
 router.get(
   "/users/:userId/transactions",
-  getUserId,
-  (req: Request, res: Response) => {}
+  [getUserId, getFilterTransaction],
+  (req: Request, res: Response) => {
+    showUserTransactions(req, res);
+  }
 );
 
 router.get(
   "/user/:userId/transactions/:id",
   getUserId,
-  (req: Request, res: Response) => {}
+  (req: Request, res: Response) => {
+    showTransactionForId(req, res);
+  }
 );
 
 router.put("/users/:id", getId, (req: Request, res: Response) => {
@@ -63,11 +75,3 @@ router.put("/users/:id", getId, (req: Request, res: Response) => {
 router.delete("/users/:id", getId, (req: Request, res: Response) => {
   removeUser(req, res);
 });
-
-// const retornar = pets.filter(
-//   (f) =>
-//     // undefined
-//     (f.nome === filtro || !filtro) &&
-//     // undefined
-//     (f.observacao == type || !type)
-// );

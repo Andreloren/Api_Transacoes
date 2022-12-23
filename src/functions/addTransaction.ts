@@ -3,8 +3,7 @@ import Transaction from "../classes/Transaction";
 import ITransaction from "../interfaces/ITransactions";
 
 export function addTransaction(req: Request, res: Response) {
-  const { user } = req.body;
-  const { title, value, type } = req.body;
+  const { title, value, type, user } = req.body;
 
   const newTransaction: ITransaction = new Transaction(title, value, type);
 

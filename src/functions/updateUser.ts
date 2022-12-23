@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { userList } from "../classes/User";
+import { userList } from "../data/user.data";
 
 export function updateUser(req: Request, res: Response) {
   const { name, cpf, email, age, index } = req.body;

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { userList } from "../classes/User";
+import { userList } from "../data/user.data";
 
 export const getUserId = (req: Request, res: Response, next: NextFunction) => {
   const { userId } = req.params;
@@ -12,6 +12,7 @@ export const getUserId = (req: Request, res: Response, next: NextFunction) => {
       message: "Usuário não encontrado",
     });
   }
+
   req.body = { user, ...req.body };
 
   next();

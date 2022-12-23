@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { User, userList } from "../classes/User";
+import { User } from "../classes/User";
+import { userList } from "../data/user.data";
 import IUsers from "../interfaces/IUsers";
 
 export function addUsers(req: Request, res: Response) {

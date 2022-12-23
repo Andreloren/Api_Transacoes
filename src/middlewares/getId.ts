@@ -1,9 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import { userList } from "../classes/User";
+import { userList } from "../data/user.data";
 
 export const getId = (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
-  const { name, cpf, email, age, transactions } = req.body;
 
   const index = userList.findIndex((i) => i.id === id);
 
@@ -13,7 +12,7 @@ export const getId = (req: Request, res: Response, next: NextFunction) => {
       mensagem: "Usuário não localizado",
     });
   }
-  req.body = { name, cpf, email, age, index, transactions };
+  req.body = { index, ...req.body };
 
   next();
 };

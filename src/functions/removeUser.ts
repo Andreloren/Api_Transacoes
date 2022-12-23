@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { userList } from "../classes/User";
+import { userList } from "../data/user.data";
 
 export function removeUser(req: Request, res: Response) {
   const { index } = req.body;

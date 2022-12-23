@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { userList } from "../classes/User";
+import { userList } from "../data/user.data";
 
 export function showUsers(req: Request, res: Response) {
   res.status(302).json({
