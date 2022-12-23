@@ -10,12 +10,14 @@ import {
   showTransactionForId,
   showUserTransactions,
 } from "../functions";
+import { updateTransaction } from "../functions/updateTransaction";
 
 import {
   checkCpf,
   checkInputsTransactions,
   checkInputsUsers,
   checkListLength,
+  checkTransactions,
   getFilter,
   getFilterTransaction,
   getId,
@@ -63,7 +65,7 @@ router.get(
 
 router.get(
   "/user/:userId/transactions/:id",
-  [getUserId, getTransactionId],
+  [getUserId, getTransactionId, checkTransactions],
   (req: Request, res: Response) => {
     showTransactionForId(req, res);
   }
@@ -75,8 +77,10 @@ router.put("/users/:id", getId, (req: Request, res: Response) => {
 
 router.put(
   "/users/:userId/transactions/:id",
-  [getUserId, getTransactionId],
-  (req: Request, res: Response) => {}
+  [getUserId, getTransactionId, checkTransactions],
+  (req: Request, res: Response) => {
+    updateTransaction(req, res);
+  }
 );
 
 router.delete("/users/:id", getId, (req: Request, res: Response) => {

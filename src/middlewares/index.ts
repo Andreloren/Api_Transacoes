@@ -7,3 +7,4 @@ export * from "./getId";
 export * from "./getUserId";
 export * from "./getFilterTransaction";
 export * from "./getTransactionId";
+export * from "./checkTransactions";

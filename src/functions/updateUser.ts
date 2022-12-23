@@ -13,7 +13,7 @@ export function updateUser(req: Request, res: Response) {
 
   return res.status(200).json({
     sucess: true,
-    mensage: "Growdever alterado",
+    mensage: "Usuário alterado",
     data: {
       Nome: userList[index].name,
       CPF: userList[index].cpf,
