@@ -9,6 +9,7 @@ import {
   updateUser,
   showTransactionForId,
   showUserTransactions,
+  removeTransaction,
 } from "../functions";
 import { updateTransaction } from "../functions/updateTransaction";
 
@@ -89,6 +90,8 @@ router.delete("/users/:id", getId, (req: Request, res: Response) => {
 
 router.delete(
   "/users/:userId/transactions/:id",
-  [getUserId, getTransactionId],
-  (req: Request, res: Response) => {}
+  [getUserId, getTransactionId, checkTransactions],
+  (req: Request, res: Response) => {
+    removeTransaction(req, res);
+  }
 );

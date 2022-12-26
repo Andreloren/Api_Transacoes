@@ -6,3 +6,4 @@ export * from "./showUsers";
 export * from "./updateUser";
 export * from "./showTransactionForId";
 export * from "./showUserTransactions";
+export * from "./removetransaction";
