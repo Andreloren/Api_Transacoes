@@ -1,19 +1,6 @@
 import { Router, Request, Response } from "express";
 
 import {
-  addTransaction,
-  addUsers,
-  removeUser,
-  showUser,
-  showUsers,
-  updateUser,
-  showTransactionForId,
-  showUserTransactions,
-  removeTransaction,
-} from "../functions";
-import { updateTransaction } from "../functions/updateTransaction";
-
-import {
   checkCpf,
   checkInputsTransactions,
   checkInputsUsers,
@@ -26,72 +13,46 @@ import {
   getUserId,
 } from "../middlewares";
 
+import functions from "../service/functions";
+
 export const router = Router();
 
-router.post(
-  "/users",
-  [checkCpf, checkInputsUsers],
-  (req: Request, res: Response) => {
-    addUsers(req, res);
-  }
-);
+router.post("/users", [checkCpf, checkInputsUsers], functions.addUsers);
 
 router.post(
   "/user/:userId/transactions",
   [getUserId, checkInputsTransactions],
-  (req: Request, res: Response) => {
-    addTransaction(req, res);
-  }
+  functions.addTransaction
 );
 
-router.get(
-  "/users",
-  [getFilter, checkListLength],
-  (req: Request, res: Response) => {
-    showUsers(req, res);
-  }
-);
+router.get("/users", [getFilter, checkListLength], functions.showUsers);
 
-router.get("/users/:id", getId, (req: Request, res: Response) => {
-  showUser(req, res);
-});
+router.get("/users/:id", getId, functions.showUser);
 
 router.get(
   "/users/:userId/transactions",
   [getUserId, getFilterTransaction],
-  (req: Request, res: Response) => {
-    showUserTransactions(req, res);
-  }
+  functions.showUserTransactions
 );
 
 router.get(
   "/user/:userId/transactions/:id",
   [getUserId, getTransactionId, checkTransactions],
-  (req: Request, res: Response) => {
-    showTransactionForId(req, res);
-  }
+  functions.showTransactionForId
 );
 
-router.put("/users/:id", getId, (req: Request, res: Response) => {
-  updateUser(req, res);
-});
+router.put("/users/:id", getId, functions.updateUser);
 
 router.put(
   "/users/:userId/transactions/:id",
   [getUserId, getTransactionId, checkTransactions],
-  (req: Request, res: Response) => {
-    updateTransaction(req, res);
-  }
+  functions.updateTransaction
 );
 
-router.delete("/users/:id", getId, (req: Request, res: Response) => {
-  removeUser(req, res);
-});
+router.delete("/users/:id", getId, functions.removeUser);
 
 router.delete(
   "/users/:userId/transactions/:id",
   [getUserId, getTransactionId, checkTransactions],
-  (req: Request, res: Response) => {
-    removeTransaction(req, res);
-  }
+  functions.removeTransaction
 );

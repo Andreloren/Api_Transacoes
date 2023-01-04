@@ -1,8 +1,7 @@
-import IUsers from "../interfaces/IUsers";
-import ITransaction from "../interfaces/ITransactions";
+import { IUsers, ITransaction } from "../interfaces/";
 import { v4 } from "uuid";
 
-export class User implements IUsers {
+class User implements IUsers {
   id: string;
   transactions: Array<ITransaction>;
 
@@ -20,3 +19,5 @@ export class User implements IUsers {
     this.transactions = [];
   }
 }
+
+export default User;

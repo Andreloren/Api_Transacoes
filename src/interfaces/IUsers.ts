@@ -1,6 +1,6 @@
-import ITransaction from "./ITransactions";
+import { ITransaction } from "./ITransactions";
 
-export default interface IUsers {
+export interface IUsers {
   id: string;
   name: string;
   cpf: string;
