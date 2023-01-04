@@ -1,3 +1,3 @@
-import { User } from "../classes/User";
+import User from "../classes/User";
 
 export let userList: User[] = [];

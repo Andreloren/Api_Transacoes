@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import ITransaction from "../interfaces/ITransactions";
+import { ITransaction } from "../interfaces";
 
 class Transaction implements ITransaction {
   id: string;
